@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="StartIQOS.ai — AI-Powered Startup Intelligence for Early-Stage Founders. From first idea to validated, fundable business system." />
+  <meta name="keywords" content="startup intelligence, AI startup platform, founder tools, idea validation, startup OS, early stage founders" />
+  <meta property="og:title"       content="StartIQOS.ai — AI-Powered Startup Intelligence" />
+  <meta property="og:description" content="From first idea to fundable system. AI validation, roadmaps, lean tools, and more." />
+  <meta property="og:type"        content="website" />
+  <title>StartIQOS.ai — AI-Powered Startup Intelligence for Founders</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800&family=Outfit:wght@200;300;400;500;600&family=Orbitron:wght@600;700;900&display=swap" rel="stylesheet" />
+
+<style>
+/* ================================================
+   STARTIQOS.AI — Design Tokens
+================================================ */
+:root {
+  --ink:          #04040a;
+  --ink-2:        #08080f;
+  --ink-3:        #0d0d18;
+  --ink-4:        #111120;
+  --card:         #0f0f1c;
+  --card-2:       #0c0c16;
+  --card-hover:   rgba(255,45,107,0.025);
+  --rose:         #ff2d6b;
+  --rose-2:       #ff6b95;
+  --rose-3:       #ffadc5;
+  --rose-fade:    rgba(255,45,107,0.08);
+  --rose-glow:    rgba(255,45,107,0.22);
+  --rose-border:  rgba(255,45,107,0.18);
+  --white:        #ffffff;
+  --silver:       #a8a8b8;
+  --dim:          #5a5a72;
+  --mist:         rgba(255,255,255,0.06);
+  --mist-line:    rgba(255,255,255,0.04);
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-mono:    'Orbitron', monospace;
+  --font-body:    'Outfit', sans-serif;
+  --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px;
+  --space-5:24px; --space-6:32px; --space-7:48px; --space-8:64px;
+  --space-9:80px; --space-10:120px; --space-11:160px;
+  --max-width:1320px; --nav-height:72px; --gutter:56px;
+  --radius-sm:2px; --radius-md:4px; --radius-pill:50px;
+  --clip-btn:  polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  --clip-card: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%);
+  --ease-out:    cubic-bezier(0.16,1,0.3,1);
+  --ease-in-out: cubic-bezier(0.4,0,0.2,1);
+  --trans-fast:  0.2s var(--ease-out);
+  --trans-base:  0.35s var(--ease-out);
+  --trans-slow:  0.65s var(--ease-out);
+  --trans-reveal:0.9s var(--ease-out);
+  --glow-rose:    0 0 60px rgba(255,45,107,0.35);
+  --glow-rose-lg: 0 0 100px rgba(255,45,107,0.25);
+  --z-base:1; --z-content:2; --z-overlay:10; --z-nav:1000; --z-cursor:99999;
+}
+@media (max-width:1024px){ :root{ --gutter:40px; } }
+@media (max-width:768px) { :root{ --gutter:24px; --space-11:100px; --space-10:80px; } }
+
+/* ================================================
+   RESET & BASE
+================================================ */
+*,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+html { overflow-x:hidden; scroll-behavior:smooth; font-size:16px; }
+body {
+  background:var(--ink); color:var(--white);
+  font-family:var(--font-body); font-weight:300;
+  overflow-x:hidden; cursor:none;
+  -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+}
+@media (hover:none) and (pointer:coarse){ body{ cursor:auto; } }
+::-webkit-scrollbar        { width:2px; }
+::-webkit-scrollbar-track  { background:transparent; }
+::-webkit-scrollbar-thumb  { background:var(--rose); border-radius:1px; }
+::selection { background:var(--rose); color:var(--white); }
+a { text-decoration:none; color:inherit; }
+img,video { display:block; max-width:100%; }
+ul,ol { list-style:none; }
+button { background:none; border:none; cursor:none; font-family:var(--font-body); }
+canvas { display:block; }
+
+body::before {
+  content:''; position:fixed; inset:0; z-index:var(--z-cursor);
+  pointer-events:none; opacity:0.030;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+}
+
+.container {
+  max-width:var(--max-width); margin:0 auto; padding:0 var(--gutter);
+  position:relative; z-index:var(--z-content);
+}
+section { position:relative; overflow:hidden; }
+h1,h2,h3,h4 { font-family:var(--font-display); font-weight:900; line-height:1.05; letter-spacing:-0.025em; }
+p { line-height:1.85; }
+
+/* ================================================
+   TYPOGRAPHY HELPERS
+================================================ */
+.eyebrow {
+  display:flex; align-items:center; gap:14px;
+  font-family:var(--font-mono); font-size:0.6rem; font-weight:600;
+  letter-spacing:0.22em; color:var(--rose); text-transform:uppercase; margin-bottom:24px;
+}
+.eyebrow-dash { width:40px; height:1px; background:var(--rose); flex:none; }
+.section-h2 { font-size:clamp(2.4rem,4.5vw,4.2rem); margin-bottom:24px; }
+.section-h2 em { font-style:italic; color:var(--rose); }
+.section-h2 .ghost { -webkit-text-stroke:1px rgba(255,255,255,0.18); color:transparent; }
+.section-desc { font-size:0.97rem; color:var(--silver); max-width:580px; line-height:1.9; margin-bottom:var(--space-8); }
+
+/* ================================================
+   BUTTONS
+================================================ */
+.btn-rose {
+  position:relative; overflow:hidden; display:inline-block;
+  background:var(--rose); color:var(--white);
+  padding:16px 38px; font-family:var(--font-body); font-weight:500;
+  font-size:0.85rem; letter-spacing:0.06em; text-transform:uppercase;
+  clip-path:var(--clip-btn); transition:box-shadow var(--trans-base);
+}
+.btn-rose:hover { box-shadow:var(--glow-rose); }
+.btn-ghost {
+  display:inline-block; background:transparent; color:var(--white);
+  padding:15px 38px; font-family:var(--font-body); font-weight:400;
+  font-size:0.85rem; letter-spacing:0.06em; text-transform:uppercase;
+  border:1px solid rgba(255,255,255,0.15); clip-path:var(--clip-btn);
+  transition:border-color var(--trans-base), background var(--trans-base);
+}
+.btn-ghost:hover { border-color:var(--rose); background:var(--rose-fade); }
+
+/* ================================================
+   ANIMATIONS
+================================================ */
+@keyframes fadeUp   { from{ opacity:0; transform:translateY(32px);  } to{ opacity:1; transform:translateY(0); } }
+@keyframes fadeIn   { from{ opacity:0; } to{ opacity:1; } }
+@keyframes heroTag  { from{ opacity:0; transform:translateY(16px);  } to{ opacity:1; transform:translateY(0); } }
+@keyframes breathe  { 0%,100%{ transform:translate(-50%,-50%) scale(1); opacity:.6; } 50%{ transform:translate(-50%,-50%) scale(1.15); opacity:1; } }
+@keyframes scan     { 0%,100%{ left:15%; opacity:0; } 10%{ opacity:.18; } 90%{ opacity:.18; } 100%{ left:82%; } }
+@keyframes ticker   { 0%{ transform:translateX(0); } 100%{ transform:translateX(-50%); } }
+@keyframes throb    { 0%,100%{ box-shadow:0 0 0 0 rgba(255,45,107,.7); } 70%{ box-shadow:0 0 0 9px transparent; } }
+@keyframes loaderFill { from{ left:-100%; } to{ left:0; } }
+@keyframes pulse    { 0%,100%{ box-shadow:0 0 0 0 rgba(255,45,107,.6); transform:scale(1); } 70%{ box-shadow:0 0 0 10px transparent; transform:scale(.9); } }
+
+/* Scroll Reveal */
+.rv { opacity:0; transform:translateY(38px); transition:opacity var(--trans-reveal), transform var(--trans-reveal); }
+.rv.in { opacity:1; transform:translateY(0); }
+.rv.from-left  { transform:translateX(-38px); }
+.rv.from-right { transform:translateX(38px); }
+.rv.from-scale { transform:scale(0.94); }
+.rv.from-left.in, .rv.from-right.in { transform:translateX(0); }
+.rv.from-scale.in { transform:scale(1); }
+.d1{ transition-delay:.08s; } .d2{ transition-delay:.16s; } .d3{ transition-delay:.24s; }
+.d4{ transition-delay:.32s; } .d5{ transition-delay:.40s; } .d6{ transition-delay:.48s; } .d7{ transition-delay:.56s; }
+
+/* ================================================
+   PAGE LOADER
+================================================ */
+#page-loader {
+  position:fixed; inset:0; background:var(--ink); z-index:99998;
+  display:flex; align-items:center; justify-content:center; flex-direction:column; gap:20px;
+  transition:opacity 0.6s var(--ease-out), visibility 0.6s;
+}
+#page-loader.hidden { opacity:0; visibility:hidden; pointer-events:none; }
+.loader-logo { font-family:var(--font-mono); font-size:1.1rem; font-weight:700; letter-spacing:0.15em; color:var(--white); }
+.loader-logo span { color:var(--rose); }
+.loader-bar { width:120px; height:1px; background:var(--mist-line); position:relative; overflow:hidden; }
+.loader-bar::after { content:''; position:absolute; top:0; left:-100%; bottom:0; width:100%; background:var(--rose); animation:loaderFill 1.2s var(--ease-out) forwards; }
+
+/* ================================================
+   CURSOR
+================================================ */
+#cursor-outer {
+  position:fixed; width:44px; height:44px; border:1px solid var(--rose); border-radius:50%;
+  pointer-events:none; z-index:var(--z-cursor); transform:translate(-50%,-50%);
+  transition:width .35s var(--ease-out), height .35s var(--ease-out), border-color .3s, background .3s;
+  mix-blend-mode:exclusion;
+}
+#cursor-inner { position:fixed; width:6px; height:6px; background:var(--rose); border-radius:50%; pointer-events:none; z-index:calc(var(--z-cursor) + 1); transform:translate(-50%,-50%); }
+body.hovering #cursor-outer { width:72px; height:72px; background:rgba(255,45,107,.06); }
+
+/* ================================================
+   NAVBAR
+================================================ */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:var(--z-nav);
+  height:var(--nav-height); padding:0 var(--gutter);
+  display:flex; align-items:center; justify-content:space-between; gap:32px;
+  transition:background .5s var(--ease-out), backdrop-filter .5s, border-color .5s;
+  border-bottom:1px solid transparent;
+}
+nav.sticky { background:rgba(4,4,10,.92); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px); border-color:var(--mist-line); }
+.nav-logo { font-family:var(--font-mono); font-size:1.05rem; font-weight:700; letter-spacing:0.1em; text-decoration:none; display:flex; align-items:center; gap:1px; flex:none; }
+.nav-logo-text { color:var(--white); }
+.nav-logo-dot  { color:var(--rose); font-size:1.5rem; line-height:1; }
+.nav-logo-ai   { color:var(--rose); }
+.nav-links { display:flex; align-items:center; gap:36px; }
+.nav-links a { font-family:var(--font-body); font-size:0.78rem; font-weight:300; color:var(--silver); letter-spacing:0.06em; text-transform:uppercase; position:relative; transition:color var(--trans-fast); }
+.nav-links a::after { content:''; position:absolute; bottom:-3px; left:0; right:0; height:1px; background:var(--rose); transform:scaleX(0); transform-origin:right; transition:transform .3s var(--ease-out); }
+.nav-links a:hover,.nav-links a.active { color:var(--white); }
+.nav-links a:hover::after,.nav-links a.active::after { transform:scaleX(1); transform-origin:left; }
+.nav-cta { font-family:var(--font-body); font-size:0.78rem; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:var(--white); border:1px solid var(--rose); padding:10px 24px; position:relative; overflow:hidden; transition:color var(--trans-fast); flex:none; }
+.nav-cta::before { content:''; position:absolute; inset:0; background:var(--rose); transform:translateX(-101%); transition:transform .3s var(--ease-out); }
+.nav-cta:hover::before { transform:translateX(0); }
+.nav-cta span { position:relative; z-index:1; }
+.nav-ham { display:none; flex-direction:column; gap:5px; cursor:none; padding:4px; }
+.nav-ham span { display:block; width:22px; height:1px; background:var(--white); transition:transform .3s var(--ease-out), opacity .3s; }
+.nav-ham.open span:nth-child(1){ transform:rotate(45deg) translate(4px,4px); }
+.nav-ham.open span:nth-child(2){ opacity:0; transform:scaleX(0); }
+.nav-ham.open span:nth-child(3){ transform:rotate(-45deg) translate(4px,-4px); }
+.nav-mobile { display:none; position:fixed; top:var(--nav-height); left:0; right:0; background:rgba(4,4,10,.98); backdrop-filter:blur(24px); border-bottom:1px solid var(--mist-line); padding:28px var(--gutter); z-index:calc(var(--z-nav) - 1); flex-direction:column; gap:20px; }
+.nav-mobile.open { display:flex; }
+.nav-mobile a { font-family:var(--font-body); font-size:1rem; font-weight:300; color:var(--silver); letter-spacing:0.06em; text-transform:uppercase; padding:8px 0; border-bottom:1px solid var(--mist-line); transition:color var(--trans-fast); }
+.nav-mobile a:hover { color:var(--rose); }
+.nav-mobile .nav-cta-mobile { margin-top:8px; text-align:center; background:var(--rose); color:var(--white); padding:14px; font-weight:500; font-size:0.85rem; letter-spacing:0.08em; border:none; border-bottom:none; }
+@media(max-width:1024px){ .nav-links{ gap:24px; } }
+@media(max-width:768px) { .nav-links{ display:none; } .nav-cta{ display:none; } .nav-ham{ display:flex; } }
+
+/* ================================================
+   TICKER
+================================================ */
+.ticker { position:relative; z-index:var(--z-overlay); overflow:hidden; padding:17px 0; background:var(--ink-2); border-top:1px solid var(--mist-line); border-bottom:1px solid var(--mist-line); }
+.ticker-track { display:flex; white-space:nowrap; animation:ticker 35s linear infinite; }
+.ticker-track span { font-family:var(--font-mono); font-size:0.58rem; font-weight:600; letter-spacing:0.28em; text-transform:uppercase; color:var(--dim); padding:0 38px; }
+.ticker-track span.accent { color:var(--rose); }
+
+/* ================================================
+   HERO
+================================================ */
+#hero { min-height:100vh; padding-top:var(--nav-height); display:flex; flex-direction:column; justify-content:center; position:relative; overflow:hidden; }
+.hero-mesh { position:absolute; inset:0; z-index:0; background: radial-gradient(ellipse 80% 60% at 62% 32%, rgba(255,45,107,.07) 0%, transparent 60%), radial-gradient(ellipse 50% 42% at 18% 72%, rgba(255,45,107,.05) 0%, transparent 55%), radial-gradient(ellipse 38% 50% at 88% 80%, rgba(255,107,149,.04) 0%, transparent 50%); }
+.hero-stripe { position:absolute; top:-10%; right:-5%; width:55%; height:130%; background:linear-gradient(175deg, rgba(255,45,107,.025) 0%, rgba(255,45,107,.012) 40%, transparent 70%); transform:skewX(-8deg); z-index:0; pointer-events:none; }
+.hero-scan { position:absolute; top:0; bottom:0; width:1px; background:linear-gradient(180deg, transparent, var(--rose), transparent); opacity:.16; animation:scan 8s ease-in-out infinite; z-index:0; }
+.hero-inner { position:relative; z-index:var(--z-content); display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:0; min-height:calc(100vh - var(--nav-height)); padding:80px 0 60px; }
+.hero-left { padding-right:60px; }
+.hero-tag { display:inline-flex; align-items:center; gap:12px; margin-bottom:40px; font-family:var(--font-mono); font-size:0.6rem; font-weight:600; letter-spacing:0.18em; color:var(--rose-2); text-transform:uppercase; animation:heroTag .8s var(--ease-out) both .2s; }
+.hero-tag-line { width:32px; height:1px; background:var(--rose); opacity:.7; }
+.hero-tag-dot  { width:5px; height:5px; border-radius:50%; background:var(--rose); animation:throb 1.8s ease-in-out infinite; }
+.hero-h1 { font-size:clamp(3.5rem,6vw,6.8rem); line-height:.96; margin-bottom:36px; animation:fadeUp .9s var(--ease-out) both .35s; }
+.hero-h1 em { display:block; font-style:italic; color:var(--rose); position:relative; }
+.hero-h1 em::after { content:''; position:absolute; bottom:-4px; left:0; right:0; height:2px; background:linear-gradient(90deg, var(--rose), transparent); }
+.hero-h1 .ghost { -webkit-text-stroke:1px rgba(255,255,255,.18); color:transparent; }
+.hero-p { font-size:1rem; font-weight:300; color:var(--silver); line-height:1.9; max-width:480px; margin-bottom:48px; animation:fadeUp 1s var(--ease-out) both .5s; }
+.hero-p strong { color:var(--white); font-weight:500; }
+.hero-actions { display:flex; gap:16px; flex-wrap:wrap; margin-bottom:64px; animation:fadeUp 1s var(--ease-out) both .65s; }
+.hero-numbers { display:grid; grid-template-columns:repeat(4,1fr); gap:0; border-top:1px solid var(--mist-line); padding-top:36px; animation:fadeUp 1s var(--ease-out) both .8s; }
+.hero-num-item { padding-right:24px; border-right:1px solid var(--mist-line); }
+.hero-num-item:last-child { border-right:none; padding-right:0; }
+.hero-num-val { font-family:var(--font-mono); font-size:1.9rem; font-weight:700; color:var(--rose); letter-spacing:-0.02em; display:block; line-height:1.1; }
+.hero-num-label { font-size:0.64rem; font-weight:300; color:var(--dim); letter-spacing:0.14em; text-transform:uppercase; margin-top:5px; display:block; }
+.hero-right { position:relative; height:100%; min-height:540px; display:flex; align-items:center; justify-content:center; animation:fadeIn 1.2s var(--ease-out) both .5s; }
+.hero-ring { position:absolute; border-radius:50%; border:1px solid rgba(255,45,107,.09); }
+.hero-ring:nth-child(1){ width:500px; height:500px; }
+.hero-ring:nth-child(2){ width:380px; height:380px; border-color:rgba(255,45,107,.06); }
+.hero-ring:nth-child(3){ width:240px; height:240px; border-color:rgba(255,45,107,.05); }
+.hero-glow { position:absolute; width:260px; height:260px; border-radius:50%; background:radial-gradient(circle, rgba(255,45,107,.12) 0%, transparent 70%); animation:breathe 4s ease-in-out infinite; top:50%; left:50%; }
+.orbit-tag { position:absolute; font-family:var(--font-mono); font-size:0.54rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--rose-2); background:rgba(255,45,107,.06); border:1px solid rgba(255,45,107,.18); padding:5px 12px; white-space:nowrap; }
+.orbit-tag:nth-child(5) { top:8%;   left:50%; transform:translateX(-50%); }
+.orbit-tag:nth-child(6) { top:28%;  right:2%; }
+.orbit-tag:nth-child(7) { bottom:28%; right:2%; }
+.orbit-tag:nth-child(8) { bottom:8%; left:50%; transform:translateX(-50%); }
+.orbit-tag:nth-child(9) { bottom:28%; left:2%; }
+.orbit-tag:nth-child(10){ top:28%;  left:2%; }
+.hero-center-text { position:absolute; text-align:center; z-index:2; top:50%; left:50%; transform:translate(-50%,-50%); }
+.hero-center-text .tiny { font-family:var(--font-mono); font-size:0.58rem; font-weight:700; letter-spacing:0.3em; color:rgba(255,255,255,.07); text-transform:uppercase; white-space:nowrap; }
+.hero-center-text .iq { font-family:var(--font-display); font-size:clamp(4rem,8vw,7rem); font-weight:900; line-height:.9; color:rgba(255,45,107,.06); letter-spacing:-0.04em; -webkit-text-stroke:1px rgba(255,45,107,.12); }
+
+/* ================================================
+   ABOUT
+================================================ */
+#about { padding:var(--space-11) 0; background:var(--ink); position:relative; }
+#about::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(90deg, transparent, var(--rose), transparent); opacity:.14; }
+.about-grid { display:grid; grid-template-columns:1fr 1fr; gap:100px; align-items:start; }
+.about-pull { font-family:var(--font-display); font-size:1.3rem; font-weight:700; font-style:italic; color:var(--white); border-left:3px solid var(--rose); padding-left:22px; margin-bottom:28px; line-height:1.55; }
+.about-body { font-size:0.95rem; font-weight:300; color:var(--silver); line-height:1.95; }
+.about-body strong { color:var(--white); font-weight:500; }
+.stat-stack { display:grid; grid-template-columns:1fr 1fr; gap:2px; margin-bottom:2px; }
+.stat-box { background:var(--ink-2); padding:36px 28px; border:1px solid var(--mist-line); position:relative; overflow:hidden; transition:border-color var(--trans-base); }
+.stat-box::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:var(--rose); transform:scaleX(0); transform-origin:left; transition:transform 0.4s var(--ease-out); }
+.stat-box:hover { border-color:var(--rose-border); }
+.stat-box:hover::before { transform:scaleX(1); }
+.stat-val { font-family:var(--font-mono); font-size:2.3rem; font-weight:700; color:var(--rose); letter-spacing:-0.02em; display:block; margin-bottom:6px; line-height:1.1; }
+.stat-label { font-size:0.7rem; font-weight:300; color:var(--dim); letter-spacing:0.1em; text-transform:uppercase; }
+.mission-box { background:var(--ink-2); border:1px solid var(--mist-line); padding:36px; clip-path:var(--clip-card); margin-top:2px; }
+.mission-box p { font-family:var(--font-display); font-size:1.1rem; font-style:italic; font-weight:700; color:var(--white); line-height:1.6; }
+.mission-box p span { color:var(--rose); }
+
+/* ================================================
+   FEATURES
+================================================ */
+#features { padding:var(--space-11) 0; background:var(--ink-2); position:relative; }
+.feats-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(340px,1fr)); gap:2px; }
+.feat-card { background:var(--card); border:1px solid var(--mist-line); padding:40px 36px; position:relative; overflow:hidden; transition:background var(--trans-base), border-color var(--trans-base), transform 0.4s var(--ease-out); cursor:none; }
+.feat-card::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg, rgba(255,45,107,.05) 0%, transparent 60%); opacity:0; transition:opacity 0.4s; }
+.feat-card:hover { background:var(--card-hover); border-color:var(--rose-border); transform:translateY(-5px); }
+.feat-card:hover::before { opacity:1; }
+.feat-tag { font-family:var(--font-mono); font-size:0.56rem; font-weight:700; letter-spacing:0.2em; color:var(--rose); text-transform:uppercase; margin-bottom:18px; display:block; }
+.feat-icon { width:48px; height:48px; border:1px solid rgba(255,45,107,.2); display:flex; align-items:center; justify-content:center; font-size:1.3rem; margin-bottom:18px; background:rgba(255,45,107,.04); clip-path:polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%); }
+.feat-name { font-family:var(--font-display); font-size:1.2rem; font-weight:800; color:var(--white); margin-bottom:12px; line-height:1.25; }
+.feat-desc { font-size:0.87rem; font-weight:300; color:var(--silver); line-height:1.8; margin-bottom:18px; }
+.feat-problem { padding-top:18px; border-top:1px solid var(--mist-line); }
+.feat-problem-label { font-family:var(--font-mono); font-size:0.54rem; font-weight:700; letter-spacing:0.16em; color:rgba(255,45,107,.65); text-transform:uppercase; margin-bottom:6px; display:block; }
+.feat-problem p { font-size:0.8rem; font-weight:300; color:var(--dim); line-height:1.65; font-style:italic; }
+
+/* ================================================
+   DEMO SECTION
+================================================ */
+#demo { padding:var(--space-11) 0; background:var(--ink); position:relative; }
+.demo-grid { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start; margin-top:72px; }
+.demo-card { background:var(--card); border:1px solid var(--mist-line); padding:32px; position:relative; overflow:hidden; transition:border-color var(--trans-base); }
+.demo-card:hover { border-color:var(--rose-border); }
+.demo-card-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:24px; padding-bottom:16px; border-bottom:1px solid var(--mist-line); }
+.demo-card-title { font-family:var(--font-mono); font-size:0.65rem; font-weight:700; letter-spacing:0.18em; color:var(--rose); text-transform:uppercase; }
+.demo-badge { font-family:var(--font-mono); font-size:0.5rem; font-weight:700; letter-spacing:0.12em; color:var(--rose); border:1px solid var(--rose-border); padding:3px 8px; background:var(--rose-fade); }
+.form-group { margin-bottom:20px; }
+.form-label { display:block; font-family:var(--font-mono); font-size:0.58rem; font-weight:700; letter-spacing:0.16em; color:var(--dim); text-transform:uppercase; margin-bottom:8px; }
+.form-input,.form-textarea,.form-select { width:100%; background:var(--ink-2); border:1px solid var(--mist-line); color:var(--white); font-family:var(--font-body); font-size:0.9rem; font-weight:300; padding:14px 16px; transition:border-color var(--trans-fast), box-shadow var(--trans-fast); outline:none; appearance:none; }
+.form-textarea { resize:vertical; min-height:100px; }
+.form-select { background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23ff2d6b' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:calc(100% - 16px) center; padding-right:44px; cursor:none; }
+.form-input:focus,.form-textarea:focus,.form-select:focus { border-color:var(--rose); box-shadow:0 0 0 2px var(--rose-fade); }
+.form-input::placeholder,.form-textarea::placeholder { color:var(--dim); }
+.val-meter-wrap { margin-bottom:14px; }
+.val-meter-label { display:flex; justify-content:space-between; align-items:center; margin-bottom:7px; }
+.val-meter-name  { font-size:0.8rem; font-weight:300; color:var(--silver); letter-spacing:0.04em; }
+.val-meter-score { font-family:var(--font-mono); font-size:0.75rem; font-weight:700; color:var(--rose); }
+.val-meter-bar   { height:3px; background:var(--mist-line); position:relative; overflow:hidden; }
+.val-meter-fill  { height:100%; background:linear-gradient(90deg, var(--rose), var(--rose-2)); transform:scaleX(0); transform-origin:left; transition:transform 1.2s var(--ease-out); }
+.val-meter-fill.animate { transform:scaleX(1); }
+.score-circle { width:120px; height:120px; border-radius:50%; border:2px solid var(--rose-border); position:relative; display:flex; align-items:center; justify-content:center; flex-direction:column; flex-shrink:0; }
+.score-circle-val { font-family:var(--font-mono); font-size:2rem; font-weight:700; color:var(--rose); line-height:1; }
+.score-circle-label { font-size:0.6rem; font-weight:300; color:var(--dim); letter-spacing:0.1em; text-transform:uppercase; margin-top:4px; }
+.score-svg { position:absolute; inset:-2px; width:calc(100% + 4px); height:calc(100% + 4px); transform:rotate(-90deg); }
+.score-svg circle { fill:none; stroke:var(--rose); stroke-width:2; stroke-linecap:round; transition:stroke-dashoffset 1.5s var(--ease-out); }
+.tag { display:inline-flex; align-items:center; gap:6px; font-family:var(--font-mono); font-size:0.54rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; padding:5px 12px; border:1px solid var(--rose-border); color:var(--rose); background:var(--rose-fade); }
+.tag-green  { border-color:rgba(52,211,153,.3);  color:#34d399; background:rgba(52,211,153,.05); }
+.tag-yellow { border-color:rgba(251,191,36,.3);  color:#fbbf24; background:rgba(251,191,36,.05); }
+.tag-red    { border-color:rgba(248,113,113,.3); color:#f87171; background:rgba(248,113,113,.05); }
+
+/* ================================================
+   HOW IT WORKS
+================================================ */
+#how { padding:var(--space-11) 0; background:var(--ink-2); position:relative; }
+.how-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin-top:72px; position:relative; }
+.how-grid::before { content:''; position:absolute; top:50px; left:12%; right:12%; height:1px; background:linear-gradient(90deg, var(--rose), rgba(255,45,107,.12), transparent); z-index:0; }
+.how-step { text-align:center; padding:0 24px; }
+.how-step-num { width:100px; height:100px; border:1px solid rgba(255,45,107,.2); border-radius:50%; margin:0 auto 26px; display:flex; align-items:center; justify-content:center; font-family:var(--font-mono); font-size:1.45rem; font-weight:700; color:var(--rose); background:var(--ink-2); position:relative; z-index:1; transition:border-color var(--trans-base), box-shadow var(--trans-base); }
+.how-step:hover .how-step-num { border-color:var(--rose); box-shadow:0 0 50px rgba(255,45,107,.22); }
+.how-step-title { font-family:var(--font-display); font-size:1.05rem; font-weight:800; color:var(--white); margin-bottom:12px; }
+.how-step-desc  { font-size:0.85rem; font-weight:300; color:var(--silver); line-height:1.8; }
+
+/* ================================================
+   IMPACT
+================================================ */
+#impact { padding:var(--space-11) 0; background:var(--ink); text-align:center; position:relative; }
+#impact::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 70% 60% at 50% 50%, rgba(255,45,107,.05) 0%, transparent 65%); }
+.impact-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:2px; margin-top:72px; border:1px solid var(--mist-line); }
+.impact-cell { background:var(--card); padding:52px 20px; border-right:1px solid var(--mist-line); text-align:center; position:relative; overflow:hidden; transition:background var(--trans-base); }
+.impact-cell:hover { background:rgba(255,45,107,.02); }
+.impact-cell:last-child { border-right:none; }
+.impact-val { font-family:var(--font-mono); font-size:clamp(1.8rem,3vw,2.8rem); font-weight:700; color:var(--rose); display:block; margin-bottom:8px; letter-spacing:-0.02em; }
+.impact-label { font-size:0.66rem; font-weight:300; color:var(--dim); letter-spacing:0.14em; text-transform:uppercase; }
+
+/* ================================================
+   INSIGHTS
+================================================ */
+#insights { padding:var(--space-11) 0; background:var(--ink-2); position:relative; }
+.insights-header { display:flex; align-items:flex-end; justify-content:space-between; gap:32px; margin-bottom:72px; }
+.insights-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
+.insight-card { background:var(--card); border:1px solid var(--mist-line); overflow:hidden; transition:border-color var(--trans-base), transform 0.4s var(--ease-out); cursor:none; }
+.insight-card:hover { border-color:rgba(255,45,107,.22); transform:translateY(-8px); }
+.insight-thumb { height:200px; display:flex; align-items:center; justify-content:center; font-size:3rem; border-bottom:1px solid var(--mist-line); background:linear-gradient(135deg, rgba(255,45,107,.07), rgba(4,4,10,.4)); position:relative; }
+.insight-thumb::before { content:''; position:absolute; inset:0; background:linear-gradient(180deg, transparent 40%, rgba(4,4,10,.6)); }
+.insight-body { padding:28px 30px; }
+.insight-cat { font-family:var(--font-mono); font-size:0.56rem; font-weight:700; letter-spacing:0.18em; color:var(--rose); text-transform:uppercase; margin-bottom:10px; display:block; }
+.insight-title { font-family:var(--font-display); font-size:1.05rem; font-weight:800; color:var(--white); margin-bottom:10px; line-height:1.35; }
+.insight-excerpt { font-size:0.84rem; font-weight:300; color:var(--silver); line-height:1.8; }
+
+/* ================================================
+   CTA
+================================================ */
+#cta { padding:180px 0; background:var(--ink); text-align:center; position:relative; overflow:hidden; }
+#cta::before { content:''; position:absolute; inset:0; background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(255,45,107,.07) 0%, transparent 60%), radial-gradient(ellipse 40% 30% at 50% 100%, rgba(255,45,107,.04) 0%, transparent 50%); }
+.cta-eyebrow { font-family:var(--font-mono); font-size:0.6rem; font-weight:700; letter-spacing:0.24em; color:var(--rose); text-transform:uppercase; margin-bottom:28px; display:block; }
+.cta-h { font-size:clamp(3.2rem,6vw,6rem); line-height:.96; letter-spacing:-0.025em; margin-bottom:28px; }
+.cta-h em { font-style:italic; color:var(--rose); }
+.cta-sub { font-size:1rem; font-weight:300; color:var(--silver); max-width:520px; margin:0 auto 56px; line-height:1.9; }
+.cta-btns { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-bottom:40px; }
+.cta-meta { font-family:var(--font-mono); font-size:0.58rem; font-weight:300; letter-spacing:0.16em; color:var(--dim); text-transform:uppercase; }
+
+/* ================================================
+   FOOTER
+================================================ */
+footer { background:var(--ink-2); border-top:1px solid var(--mist-line); padding:80px 0 40px; }
+.footer-grid { display:grid; grid-template-columns:2.2fr 1fr 1fr 1fr; gap:60px; margin-bottom:60px; }
+.footer-logo { font-family:var(--font-mono); font-size:1.15rem; font-weight:700; letter-spacing:0.1em; text-decoration:none; display:inline-flex; align-items:center; gap:1px; margin-bottom:18px; }
+.footer-logo-text { color:var(--white); }
+.footer-logo-dot  { color:var(--rose); font-size:1.4rem; line-height:1; }
+.footer-logo-ai   { color:var(--rose); }
+.footer-tagline { font-size:0.87rem; font-weight:300; color:var(--dim); line-height:1.8; max-width:280px; margin-bottom:28px; }
+.footer-socials { display:flex; gap:10px; }
+.footer-social { width:36px; height:36px; border:1px solid var(--mist-line); display:flex; align-items:center; justify-content:center; font-size:0.85rem; color:var(--dim); transition:border-color var(--trans-fast), color var(--trans-fast); }
+.footer-social:hover { border-color:var(--rose); color:var(--rose); }
+.footer-col h5 { font-family:var(--font-mono); font-size:0.58rem; font-weight:700; letter-spacing:0.2em; color:var(--dim); text-transform:uppercase; margin-bottom:22px; }
+.footer-col a { display:block; font-size:0.87rem; font-weight:300; color:var(--silver); margin-bottom:12px; transition:color var(--trans-fast); }
+.footer-col a:hover { color:var(--rose); }
+.footer-bottom { border-top:1px solid var(--mist-line); padding-top:28px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+.footer-bottom p,.footer-bottom a { font-size:0.76rem; font-weight:300; color:var(--dim); }
+.footer-bottom a { transition:color var(--trans-fast); }
+.footer-bottom a:hover { color:var(--rose); }
+.footer-bottom-links { display:flex; gap:20px; }
+
+/* ================================================
+   RESPONSIVE
+================================================ */
+@media(max-width:1100px){
+  .hero-inner    { grid-template-columns:1fr; gap:60px; }
+  .hero-right    { min-height:360px; }
+  .hero-left     { padding-right:0; }
+  .about-grid    { grid-template-columns:1fr; gap:60px; }
+  .impact-grid   { grid-template-columns:repeat(2,1fr); }
+  .how-grid      { grid-template-columns:repeat(2,1fr); gap:40px; }
+  .how-grid::before { display:none; }
+  .footer-grid   { grid-template-columns:1fr 1fr; gap:40px; }
+  .demo-grid     { grid-template-columns:1fr; }
+  .feats-grid    { grid-template-columns:1fr; }
+}
+@media(max-width:768px){
+  .hero-numbers  { grid-template-columns:repeat(2,1fr); }
+  .insights-grid { grid-template-columns:1fr; }
+  .impact-grid   { grid-template-columns:repeat(2,1fr); }
+  .how-grid      { grid-template-columns:1fr; }
+  .footer-grid   { grid-template-columns:1fr; }
+  .insights-header { flex-direction:column; align-items:flex-start; }
+  .stat-stack    { grid-template-columns:1fr; }
+  #cta           { padding:120px 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- PAGE LOADER -->
+<div id="page-loader">
+  <div class="loader-logo">START<span>·IQOS.AI</span></div>
+  <div class="loader-bar"></div>
+</div>
+
+<!-- CURSOR -->
+<div id="cursor-outer"></div>
+<div id="cursor-inner"></div>
+
+<!-- ═══════════════════════════════════════════
+     NAVBAR
+═══════════════════════════════════════════ -->
+<nav id="main-nav">
+  <a href="#hero" class="nav-logo">
+    <span class="nav-logo-text">START</span>
+    <span class="nav-logo-dot">·</span>
+    <span class="nav-logo-ai">IQOS.AI</span>
+  </a>
+  <button class="nav-ham" id="nav-ham" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#demo">Live Demo</a></li>
+    <li><a href="#how">Process</a></li>
+    <li><a href="#insights">Insights</a></li>
+  </ul>
+  <a href="#cta" class="nav-cta"><span>Get Early Access</span></a>
+</nav>
+<div id="nav-mobile" class="nav-mobile">
+  <a href="#about">About</a>
+  <a href="#features">Features</a>
+  <a href="#demo">Live Demo</a>
+  <a href="#how">Process</a>
+  <a href="#insights">Insights</a>
+  <a href="#cta" class="nav-cta-mobile">Get Early Access →</a>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════ -->
+<section id="hero">
+  <canvas id="blob-hero" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;"></canvas>
+  <div class="hero-mesh"></div>
+  <div class="hero-stripe"></div>
+  <div class="hero-scan"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="hero-tag">
+          <div class="hero-tag-line"></div>
+          <div class="hero-tag-dot"></div>
+          Early-Stage Founder Intelligence Platform
+        </div>
+        <h1 class="hero-h1">
+          Turn Raw<br>
+          <em>Ideas Into</em><br>
+          <span class="ghost">Systems.</span>
+        </h1>
+        <p class="hero-p">
+          <strong>StartIQOS.ai</strong> is the AI operating system built for founders at day zero — <strong>7 intelligent features</strong> that take you from raw idea to validated, structured, fundable business before you spend a single rupee.
+        </p>
+        <div class="hero-actions">
+          <a href="#demo" class="btn-rose">Try Idea Validation →</a>
+          <a href="#features" class="btn-ghost">See All Features</a>
+        </div>
+        <div class="hero-numbers">
+          <div class="hero-num-item">
+            <span class="hero-num-val" data-count="7">0</span>
+            <span class="hero-num-label">Features</span>
+          </div>
+          <div class="hero-num-item">
+            <span class="hero-num-val" data-count="150" data-sfx="+">0</span>
+            <span class="hero-num-label">College Partners</span>
+          </div>
+          <div class="hero-num-item">
+            <span class="hero-num-val" data-count="40" data-sfx="+">0</span>
+            <span class="hero-num-label">Countries</span>
+          </div>
+          <div class="hero-num-item">
+            <span class="hero-num-val">90%</span>
+            <span class="hero-num-label">Failure Rate We Target</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-ring"></div>
+        <div class="hero-ring"></div>
+        <div class="hero-ring"></div>
+        <div class="hero-glow"></div>
+        <div class="orbit-tag">Idea Validation</div>
+        <div class="orbit-tag">Visual Roadmap</div>
+        <div class="orbit-tag">Lean Experiments</div>
+        <div class="orbit-tag">Brand Automation</div>
+        <div class="orbit-tag">Team Hub</div>
+        <div class="orbit-tag">Talent Network</div>
+        <div class="hero-center-text">
+          <div class="tiny">Startup Intelligence</div>
+          <div class="iq">OS</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span>STARTIQOS.AI</span><span class="accent">✦</span>
+    <span>IDEA VALIDATION</span><span class="accent">✦</span>
+    <span>EXECUTION ROADMAP</span><span class="accent">✦</span>
+    <span>LEAN METHODOLOGY</span><span class="accent">✦</span>
+    <span>BRAND AUTOMATION</span><span class="accent">✦</span>
+    <span>TEAM COLLABORATION</span><span class="accent">✦</span>
+    <span>TALENT NETWORK</span><span class="accent">✦</span>
+    <span>COMMUNITY INTELLIGENCE</span><span class="accent">✦</span>
+    <span>FOUNDER OS</span><span class="accent">✦</span>
+    <span>ZERO GUESSWORK</span><span class="accent">✦</span>
+    <span>STARTIQOS.AI</span><span class="accent">✦</span>
+    <span>IDEA VALIDATION</span><span class="accent">✦</span>
+    <span>EXECUTION ROADMAP</span><span class="accent">✦</span>
+    <span>LEAN METHODOLOGY</span><span class="accent">✦</span>
+    <span>BRAND AUTOMATION</span><span class="accent">✦</span>
+    <span>TEAM COLLABORATION</span><span class="accent">✦</span>
+    <span>TALENT NETWORK</span><span class="accent">✦</span>
+    <span>COMMUNITY INTELLIGENCE</span><span class="accent">✦</span>
+    <span>FOUNDER OS</span><span class="accent">✦</span>
+    <span>ZERO GUESSWORK</span><span class="accent">✦</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     ABOUT
+═══════════════════════════════════════════ -->
+<section id="about">
+  <canvas id="blob-about" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;"></canvas>
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <div class="eyebrow rv"><div class="eyebrow-dash"></div>Built for Day Zero</div>
+        <h2 class="section-h2 rv d1">Every founder deserves<br><em>a fair shot.</em></h2>
+        <div class="about-pull rv d2">"To replace guesswork with structured intelligence — from the first idea to the first investor meeting."</div>
+        <div class="about-body rv d3">
+          <strong>StartIQOS.ai</strong> is the intelligence layer that early-stage founders have always needed but never had. We identified that 90% of startups fail — not because founders lack talent, but because they lack <strong>systems, structure, and validation</strong> at the earliest, most critical stage.<br><br>
+          We built 7 interconnected features that work together as a single operating system — covering idea validation, roadmap execution, lean experimentation, brand building, team management, community, and talent access. <strong>From day zero. For any founder. Anywhere.</strong>
+        </div>
+      </div>
+      <div>
+        <div class="stat-stack rv from-right d1">
+          <div class="stat-box"><span class="stat-val">305M+</span><div class="stat-label">Startups launched globally per year</div></div>
+          <div class="stat-box"><span class="stat-val">90%</span><div class="stat-label">Failure rate we're built to reduce</div></div>
+          <div class="stat-box"><span class="stat-val">$650B</span><div class="stat-label">Total addressable market</div></div>
+          <div class="stat-box"><span class="stat-val" data-count="7">0</span><div class="stat-label">Features in the Early-Stage OS</div></div>
+        </div>
+        <div class="mission-box rv from-right d3">
+          <p>"No background, no city, no connections required — <span>just an idea and the intelligence to execute it.</span> That's what StartIQOS.ai gives every founder."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FEATURES — 7 CARDS
+═══════════════════════════════════════════ -->
+<section id="features">
+  <canvas id="blob-features" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;"></canvas>
+  <div class="container">
+    <div class="eyebrow rv"><div class="eyebrow-dash"></div>The Platform — Role 01</div>
+    <h2 class="section-h2 rv d1">7 Features.<br><em>One Founder OS.</em></h2>
+    <p class="section-desc rv d2">Every feature targets a specific failure point of early-stage companies. Together they form the only complete AI operating system for founders at day zero.</p>
+
+    <div class="feats-grid">
+      <div class="feat-card rv d1">
+        <span class="feat-tag">FEATURE 01</span>
+        <div class="feat-icon">🎯</div>
+        <div class="feat-name">Idea Validation AI</div>
+        <div class="feat-desc">AI analyses your startup concept across 5 dimensions: problem strength, market size, competitor landscape, feasibility, and opportunity score. Full validation report before writing a single line of code.</div>
+        <div class="feat-problem"><span class="feat-problem-label">Problem Solved</span><p>Founders build for months without testing assumptions — then launch to silence.</p></div>
+      </div>
+      <div class="feat-card rv d2">
+        <span class="feat-tag">FEATURE 02</span>
+        <div class="feat-icon">🗺️</div>
+        <div class="feat-name">Execution &amp; Visual Roadmap</div>
+        <div class="feat-desc">Converts validated strategy into a milestone-based visual execution plan — phases, action items, timelines, and investor-ready pitch deck narrative, all generated from your data automatically.</div>
+        <div class="feat-problem"><span class="feat-problem-label">Problem Solved</span><p>Strategy stays in the founder's head with no system to convert it into action.</p></div>
+      </div>
+      <div class="feat-card rv d3">
+        <span class="feat-tag">FEATURE 03</span>
+        <div class="feat-icon">⚗️</div>
+        <div class="feat-name">Lean Methodology Tools</div>
+        <div class="feat-desc">Design the smallest possible experiments to validate critical assumptions before over-building. AI identifies which assumptions will kill the business if wrong — and designs lightweight tests for each.</div>
+        <div class="feat-problem"><span class="feat-problem-label">Problem Solved</span><p>Founders build complete products before discovering the core assumption was wrong.</p></div>
+      </div>
+      <div class="feat-card rv d4">
+        <span class="feat-tag">FEATURE 04</span>
+        <div class="feat-icon">🤖</div>
+        <div class="feat-name">AI Content &amp; Brand Automation</div>
+        <div class="feat-desc">AI generates, schedules, and monitors brand content across LinkedIn, email, and social — consistent professional presence without the founder manually writing a single word.</div>
+        <div class="feat-problem"><span class="feat-problem-label">Problem Solved</span><p>No time to build brand while simultaneously building the product.</p></div>
+      </div>
+      <div class="feat-card rv d5">
+        <span class="feat-tag">FEATURE 05</span>
+        <div class="feat-icon">🏗️</div>
+        <div class="feat-name">Team Building &amp; Collab Hub</div>
+        <div class="feat-desc">Centralized workspace for task assignment, project communication, file sharing, and shared decision logs — replacing scattered WhatsApp groups with a structured professional operating layer.</div>
+        <div class="feat-problem"><span class="feat-problem-label">Problem Solved</span><p>Information across 6 apps — decisions forgotten, priorities unknown.</p></div>
+      </div>
+      <div class="feat-card rv d6">
+        <span class="feat-tag">FEATURE 06</span>
+        <div class="feat-icon">🌐</div>
+        <div class="feat-name">Community Intelligence Layer</div>
+        <div class="feat-desc">Public forums, Q&amp;A rooms, idea feedback threads, founder stories, event hubs, and community polls — a living knowledge infrastructure built around the challenges of building companies.</div>
+        <div class="feat-problem"><span class="feat-problem-label">Problem Solved</span><p>Building a startup is isolating — founders have nobody who understands their journey.</p></div>
+      </div>
+      <div class="feat-card rv d7">
+        <span class="feat-tag">FEATURE 07</span>
+        <div class="feat-icon">🎓</div>
+        <div class="feat-name">Elite Talent &amp; College Network</div>
+        <div class="feat-desc">Skill-matched college students connected to startup projects via a relevance-first algorithm. A Python developer gets matched to backend tasks — not design briefs. Real, precise execution help.</div>
+        <div class="feat-problem"><span class="feat-problem-label">Problem Solved</span><p>Founders need execution help but can't afford full-time hires at early stage.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     INTERACTIVE DEMO
+═══════════════════════════════════════════ -->
+<section id="demo">
+  <canvas id="blob-demo" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;"></canvas>
+  <div class="container">
+    <div class="eyebrow rv"><div class="eyebrow-dash"></div>Live Platform Preview</div>
+    <h2 class="section-h2 rv d1">Try It Right Now.<br><em>No Sign-Up Required.</em></h2>
+    <p class="section-desc rv d2">Two live demos directly from the platform — the Idea Validation Engine and the Execution Roadmap Generator. Real intelligence, right here.</p>
+
+    <div class="demo-grid">
+
+      <!-- VALIDATION ENGINE -->
+      <div class="demo-card rv d1">
+        <div class="demo-card-header">
+          <span class="demo-card-title">Idea Validation Engine</span>
+          <span class="demo-badge">LIVE DEMO</span>
+        </div>
+        <div id="val-form">
+          <div class="form-group">
+            <label class="form-label" for="val-idea">Describe your startup idea</label>
+            <textarea class="form-textarea" id="val-idea" placeholder="e.g. An AI platform that helps early-stage founders validate their ideas before spending on development…" rows="4"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="val-market">Target Market</label>
+            <select class="form-select" id="val-market">
+              <option value="">Select market…</option>
+              <option value="b2b">B2B / Enterprise</option>
+              <option value="b2c">B2C / Consumer</option>
+              <option value="marketplace">Marketplace</option>
+              <option value="saas">SaaS</option>
+              <option value="fintech">FinTech</option>
+              <option value="edtech">EdTech</option>
+              <option value="healthtech">HealthTech</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="val-stage">Current Stage</label>
+            <select class="form-select" id="val-stage">
+              <option value="">Select stage…</option>
+              <option value="idea">Just an idea</option>
+              <option value="research">Researching the market</option>
+              <option value="prototype">Building a prototype</option>
+              <option value="mvp">Have an MVP</option>
+            </select>
+          </div>
+          <button id="val-btn" class="btn-rose" style="width:100%;">Analyse My Idea →</button>
+        </div>
+        <div id="val-result" style="display:none;"></div>
+      </div>
+
+      <!-- ROADMAP GENERATOR -->
+      <div class="demo-card rv d2" style="display:flex;flex-direction:column;">
+        <div class="demo-card-header">
+          <span class="demo-card-title">Execution Roadmap Generator</span>
+          <span class="demo-badge">LIVE PREVIEW</span>
+        </div>
+        <div style="font-size:0.82rem;font-weight:300;color:var(--silver);line-height:1.7;margin-bottom:16px;">
+          Once validated, the platform auto-generates a phased execution roadmap — milestones, action items, and timelines built from your validation data.
+        </div>
+        <div style="background:var(--rose-fade);border:1px solid var(--rose-border);padding:12px 16px;margin-bottom:20px;">
+          <span style="font-family:var(--font-mono);font-size:0.58rem;font-weight:700;letter-spacing:.14em;color:var(--rose);text-transform:uppercase;">Sample Output — AI SaaS for Founders</span>
+        </div>
+        <div id="roadmap-demo" style="display:grid;gap:12px;flex:1;"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     HOW IT WORKS
+═══════════════════════════════════════════ -->
+<section id="how">
+  <canvas id="blob-how" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;"></canvas>
+  <div class="container" style="text-align:center;">
+    <div class="eyebrow rv" style="justify-content:center;"><div class="eyebrow-dash"></div>How It Works</div>
+    <h2 class="section-h2 rv d1" style="text-align:center;">Four Steps to<br><em>Execution Intelligence</em></h2>
+    <div class="how-grid rv d2">
+      <div class="how-step">
+        <div class="how-step-num">01</div>
+        <div class="how-step-title">Idea Structuring</div>
+        <div class="how-step-desc">Input your concept. The AI validates it across 5 dimensions, identifies assumptions, and generates a structured opportunity analysis before you commit a single resource.</div>
+      </div>
+      <div class="how-step">
+        <div class="how-step-num">02</div>
+        <div class="how-step-title">Roadmap Generation</div>
+        <div class="how-step-desc">Validated ideas are automatically converted into phased execution plans — milestones, timelines, and investor-ready narrative structures, all AI-generated from your data.</div>
+      </div>
+      <div class="how-step">
+        <div class="how-step-num">03</div>
+        <div class="how-step-title">Talent Matching</div>
+        <div class="how-step-desc">Skill gaps identified in your roadmap are filled via the College Talent Network — precision-matched students and professionals, ready to execute on real deliverables.</div>
+      </div>
+      <div class="how-step">
+        <div class="how-step-num">04</div>
+        <div class="how-step-title">Brand &amp; Growth</div>
+        <div class="how-step-desc">As you execute, Brand Automation runs your content presence and Community Intelligence keeps you connected to the founder ecosystem — scaling with you automatically.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     IMPACT
+═══════════════════════════════════════════ -->
+<section id="impact">
+  <canvas id="blob-impact" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;"></canvas>
+  <div class="container">
+    <div class="eyebrow rv" style="justify-content:center;"><div class="eyebrow-dash"></div>The Numbers</div>
+    <h2 class="section-h2 rv d1" style="text-align:center;">The Scale of<br><em>The Mission</em></h2>
+    <div class="impact-grid rv d2">
+      <div class="impact-cell"><span class="impact-val" data-count="7">0</span><div class="impact-label">Features in Role 01</div></div>
+      <div class="impact-cell"><span class="impact-val">305M+</span><div class="impact-label">Startups / Year</div></div>
+      <div class="impact-cell"><span class="impact-val">$650B</span><div class="impact-label">Market Opportunity</div></div>
+      <div class="impact-cell"><span class="impact-val">90%→?</span><div class="impact-label">Failure Rate We Target</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     INSIGHTS
+═══════════════════════════════════════════ -->
+<section id="insights">
+  <div class="container">
+    <div class="insights-header rv">
+      <div>
+        <div class="eyebrow"><div class="eyebrow-dash"></div>Insights</div>
+        <h2 class="section-h2" style="margin-bottom:0;">Founder Intelligence<br><em>Library</em></h2>
+      </div>
+      <a href="#" class="btn-ghost" style="padding:12px 26px;font-size:.78rem;">View All →</a>
+    </div>
+    <div class="insights-grid">
+      <div class="insight-card rv d1">
+        <div class="insight-thumb"><span>🚀</span></div>
+        <div class="insight-body">
+          <span class="insight-cat">Strategy</span>
+          <div class="insight-title">Why 90% of Early-Stage Startups Fail in Year One</div>
+          <div class="insight-excerpt">The three structural gaps most founders miss — and how intelligent execution systems close them permanently before capital runs out.</div>
+        </div>
+      </div>
+      <div class="insight-card rv d2">
+        <div class="insight-thumb" style="background:linear-gradient(135deg,rgba(139,92,246,.12),rgba(255,45,107,.06));"><span>✅</span></div>
+        <div class="insight-body">
+          <span class="insight-cat" style="color:#a78bfa;">Validation</span>
+          <div class="insight-title">The Idea Validation Checklist Every Founder Needs</div>
+          <div class="insight-excerpt">5 dimensions that determine whether your concept has real market potential — and the exact questions to ask before building anything.</div>
+        </div>
+      </div>
+      <div class="insight-card rv d3">
+        <div class="insight-thumb" style="background:linear-gradient(135deg,rgba(16,185,129,.08),rgba(255,45,107,.06));"><span>🎓</span></div>
+        <div class="insight-body">
+          <span class="insight-cat" style="color:#34d399;">Talent</span>
+          <div class="insight-title">How College Talent Became the Startup Execution Edge</div>
+          <div class="insight-excerpt">Why the smartest founders use structured student networks to move faster than their well-funded competitors.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CTA
+═══════════════════════════════════════════ -->
+<section id="cta">
+  <canvas id="blob-cta" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;"></canvas>
+  <div class="container" style="position:relative;z-index:2;">
+    <span class="cta-eyebrow rv">StartIQOS.ai — Early-Stage Founder OS</span>
+    <h2 class="cta-h rv d1">Ready to Build<br><em>With Intelligence?</em></h2>
+    <p class="cta-sub rv d2">Stop guessing. Start executing. Let StartIQOS.ai transform your raw idea into a validated, fundable, executable business system — from day one to your first investor meeting.</p>
+    <div class="cta-btns rv d3">
+      <a href="mailto:shashwatdogra13@gmail.com" class="btn-rose">Analyse My Idea — Free</a>
+      <a href="mailto:shashwatdogra13@gmail.com" class="btn-ghost">Talk to the Founder</a>
+    </div>
+    <div class="cta-meta rv d4">shashwatdogra13@gmail.com &nbsp;·&nbsp; Chandigarh, India &nbsp;·&nbsp; startiqos.ai</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="#hero" class="footer-logo">
+          <span class="footer-logo-text">START</span>
+          <span class="footer-logo-dot">·</span>
+          <span class="footer-logo-ai">IQOS.AI</span>
+        </a>
+        <p class="footer-tagline">The AI-powered Startup Operating System for early-stage founders — from first idea to first investor. 7 features. Zero guesswork.</p>
+        <div class="footer-socials">
+          <a href="#" class="footer-social">𝕏</a>
+          <a href="#" class="footer-social">in</a>
+          <a href="#" class="footer-social">▶</a>
+          <a href="#" class="footer-social">⌥</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Platform</h5>
+        <a href="#features">Idea Validation AI</a>
+        <a href="#features">Execution Roadmap</a>
+        <a href="#features">Lean Tools</a>
+        <a href="#features">Brand Automation</a>
+        <a href="#features">Talent Network</a>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <a href="#about">About Us</a>
+        <a href="#insights">Insights</a>
+        <a href="#how">How It Works</a>
+        <a href="mailto:shashwatdogra13@gmail.com">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h5>Legal</h5>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Documentation</a>
+        <a href="#">API Access</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 StartIQOS.ai — All rights reserved. Built for serious founders.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="mailto:shashwatdogra13@gmail.com">shashwatdogra13@gmail.com</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ================================================
+   BLOB CANVAS ENGINE
+================================================ */
+(function(){
+  'use strict';
+  class BlobCanvas {
+    constructor(id, opts={}){
+      this.canvas = document.getElementById(id);
+      if(!this.canvas) return;
+      this.ctx  = this.canvas.getContext('2d');
+      this.opts = Object.assign({colors:['#ff2d6b','#ff6b95','#be185d'],opacity:.16,count:3,speed:.004}, opts);
+      this.t=0; this.blobs=[]; this.running=true;
+      this.resize(); this.initBlobs(); this.animate();
+      window.addEventListener('resize', ()=>{ this.resize(); this.initBlobs(); });
+      document.addEventListener('visibilitychange', ()=>{ this.running=!document.hidden; if(this.running) this.animate(); });
+    }
+    resize(){
+      const p=this.canvas.parentElement;
+      this.canvas.width=p.offsetWidth; this.canvas.height=p.offsetHeight;
+      this.w=this.canvas.width; this.h=this.canvas.height;
+    }
+    initBlobs(){
+      const n=window.innerWidth<768?Math.min(2,this.opts.count):this.opts.count;
+      this.blobs=Array.from({length:n},(_,i)=>({
+        x:this.w*(0.2+i*0.35), y:this.h*(0.25+(i%2)*0.45),
+        r:Math.min(this.w,this.h)*(0.18+Math.random()*0.14),
+        ox:Math.random()*1000, oy:Math.random()*1000,
+        speed:this.opts.speed+Math.random()*0.0002,
+        color:this.opts.colors[i%this.opts.colors.length],
+        phase:i*(Math.PI*2/n)
+      }));
+    }
+    drawOrganic(ctx,cx,cy,r,phase){
+      const pts=8; ctx.beginPath();
+      for(let i=0;i<=pts;i++){
+        const a=(i/pts)*Math.PI*2;
+        const noise=0.72+0.28*Math.sin(a*2.2+phase+this.t*0.38)*Math.cos(a*1.7+phase*0.8+this.t*0.28);
+        const rr=r*noise;
+        i===0?ctx.moveTo(cx+Math.cos(a)*rr,cy+Math.sin(a)*rr):ctx.lineTo(cx+Math.cos(a)*rr,cy+Math.sin(a)*rr);
+      }
+      ctx.closePath();
+    }
+    animate(){
+      if(!this.canvas||!this.running) return;
+      this.t+=0.005;
+      const ctx=this.ctx; ctx.clearRect(0,0,this.w,this.h);
+      this.blobs.forEach(b=>{
+        const nx=Math.sin(b.ox*1.3+this.t*0.6)*Math.cos(b.oy*0.9+this.t*0.4);
+        const ny=Math.cos(b.oy*1.2+this.t*0.5)*Math.sin(b.ox*0.8+this.t*0.35);
+        b.x+=nx*0.5; b.y+=ny*0.5;
+        b.x=((b.x%this.w)+this.w)%this.w; b.y=((b.y%this.h)+this.h)%this.h;
+        b.ox+=b.speed; b.oy+=b.speed*0.7;
+        const g=ctx.createRadialGradient(b.x,b.y,0,b.x,b.y,b.r);
+        g.addColorStop(0,b.color+'44'); g.addColorStop(.45,b.color+'18'); g.addColorStop(1,'transparent');
+        ctx.save(); ctx.globalAlpha=this.opts.opacity;
+        this.drawOrganic(ctx,b.x,b.y,b.r,b.phase);
+        ctx.fillStyle=g; ctx.fill(); ctx.restore();
+      });
+      requestAnimationFrame(()=>this.animate());
+    }
+  }
+  window.addEventListener('load',()=>{
+    [
+      {id:'blob-hero',    opts:{colors:['#ff2d6b','#ec4899','#db2777'],opacity:.20}},
+      {id:'blob-about',   opts:{colors:['#ff2d6b','#be185d'],          opacity:.15}},
+      {id:'blob-features',opts:{colors:['#ff2d6b','#9333ea'],          opacity:.13}},
+      {id:'blob-demo',    opts:{colors:['#ec4899','#ff2d6b'],          opacity:.14}},
+      {id:'blob-how',     opts:{colors:['#ff2d6b','#be185d'],          opacity:.14}},
+      {id:'blob-impact',  opts:{colors:['#ec4899','#ff2d6b'],          opacity:.15}},
+      {id:'blob-cta',     opts:{colors:['#ff2d6b','#db2777','#9333ea'],opacity:.18}},
+    ].forEach(({id,opts})=>new BlobCanvas(id,opts));
+  });
+})();
+
+/* ================================================
+   MAIN INTERACTIONS
+================================================ */
+(function(){
+  'use strict';
+
+  /* LOADER */
+  const loader=document.getElementById('page-loader');
+  if(loader) window.addEventListener('load',()=>setTimeout(()=>loader.classList.add('hidden'),800));
+
+  /* CURSOR */
+  if(!window.matchMedia('(hover:none) and (pointer:coarse)').matches){
+    const outer=document.getElementById('cursor-outer'), inner=document.getElementById('cursor-inner');
+    if(outer&&inner){
+      let mx=0,my=0,ox=0,oy=0;
+      document.addEventListener('mousemove',e=>{ mx=e.clientX; my=e.clientY; inner.style.left=mx+'px'; inner.style.top=my+'px'; });
+      (function loop(){ ox+=(mx-ox)*.1; oy+=(my-oy)*.1; outer.style.left=ox+'px'; outer.style.top=oy+'px'; requestAnimationFrame(loop); })();
+      document.querySelectorAll('a,button,.feat-card,.insight-card,.stat-box,.how-step,.impact-cell,.btn-rose,.btn-ghost,.nav-cta,.demo-card').forEach(el=>{
+        el.addEventListener('mouseenter',()=>document.body.classList.add('hovering'));
+        el.addEventListener('mouseleave',()=>document.body.classList.remove('hovering'));
+      });
+    }
+  }
+
+  /* NAVBAR */
+  const nav=document.getElementById('main-nav');
+  if(nav){
+    window.addEventListener('scroll',()=>{
+      nav.classList.toggle('sticky',window.scrollY>60);
+      const secs=document.querySelectorAll('section[id]'), links=document.querySelectorAll('.nav-links a');
+      let cur='';
+      secs.forEach(s=>{ if(window.scrollY>=s.offsetTop-110) cur=s.id; });
+      links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+cur));
+    },{passive:true});
+    const ham=document.getElementById('nav-ham'), mob=document.getElementById('nav-mobile');
+    if(ham&&mob){
+      ham.addEventListener('click',()=>{ ham.classList.toggle('open'); mob.classList.toggle('open'); });
+      mob.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{ ham.classList.remove('open'); mob.classList.remove('open'); }));
+    }
+  }
+
+  /* SCROLL REVEAL */
+  const rvEls=document.querySelectorAll('.rv');
+  if(rvEls.length){
+    new IntersectionObserver(entries=>entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); }),{threshold:.08}).observe||
+    rvEls.forEach(el=>el.classList.add('in'));
+    const io=new IntersectionObserver(entries=>entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); }),{threshold:.08});
+    rvEls.forEach(el=>io.observe(el));
+  }
+
+  /* COUNTERS */
+  const counters=document.querySelectorAll('[data-count]');
+  if(counters.length){
+    const io=new IntersectionObserver(entries=>entries.forEach(e=>{
+      if(!e.isIntersecting) return;
+      const el=e.target, target=+el.dataset.count, sfx=el.dataset.sfx||'';
+      let cur=0; const inc=target/60;
+      const t=setInterval(()=>{ cur=Math.min(cur+inc,target); el.textContent=Math.floor(cur)+sfx; if(cur>=target){clearInterval(t);el.textContent=target+sfx;} },16);
+      io.unobserve(el);
+    }),{threshold:.5});
+    counters.forEach(c=>io.observe(c));
+  }
+
+  /* SMOOTH SCROLL */
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{ const t=document.querySelector(a.getAttribute('href')); if(!t) return; e.preventDefault(); t.scrollIntoView({behavior:'smooth',block:'start'}); });
+  });
+
+  /* ── VALIDATION DEMO ── */
+  const valBtn=document.getElementById('val-btn');
+  if(valBtn){
+    valBtn.addEventListener('click',()=>{
+      const idea=document.getElementById('val-idea')?.value?.trim();
+      if(!idea||idea.length<10){ showNotif('Please describe your idea in at least 10 characters.','error'); return; }
+      valBtn.textContent='Analysing…'; valBtn.style.opacity='.6'; valBtn.disabled=true;
+      setTimeout(()=>{
+        const scores=genScores(idea);
+        renderValidation(scores,idea);
+        document.getElementById('val-form').style.display='none';
+        document.getElementById('val-result').style.display='block';
+        valBtn.textContent='Analyse My Idea →'; valBtn.style.opacity='1'; valBtn.disabled=false;
+        setTimeout(()=>{
+          document.querySelectorAll('.val-meter-fill').forEach(f=>f.classList.add('animate'));
+          animateCircle(scores.overall);
+        },100);
+      },1800);
+    });
+  }
+
+  function genScores(idea){
+    const s=idea.length;
+    const r=(mn,mx,o)=>Math.min(mx,Math.max(mn,Math.floor(((s*(o+1))%(mx-mn+1))+mn)));
+    const ps=r(55,92,1), ms=r(48,88,2), ce=r(40,85,3), fe=r(52,90,4), os=r(50,95,5);
+    return { problemStrength:ps, marketSize:ms, competitor:ce, feasibility:fe, opportunityScore:os, overall:Math.floor((ps+ms+ce+fe+os)/5) };
+  }
+
+  function renderValidation(scores,idea){
+    const result=document.getElementById('val-result');
+    const rating=scores.overall>=75?{label:'Strong Opportunity',cls:'tag-green'}:scores.overall>=55?{label:'Moderate Potential',cls:'tag-yellow'}:{label:'Needs Refinement',cls:'tag-red'};
+    const C=2*Math.PI*52, offset=C-(scores.overall/100)*C;
+    result.innerHTML=`
+      <div class="demo-card-header">
+        <span class="demo-card-title">Validation Report</span>
+        <span class="tag ${rating.cls}">${rating.label}</span>
+      </div>
+      <div style="display:flex;gap:24px;align-items:flex-start;margin-bottom:28px;flex-wrap:wrap;">
+        <div class="score-circle">
+          <svg class="score-svg" viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r="52" stroke="rgba(255,45,107,.1)" stroke-width="3" fill="none"/>
+            <circle id="score-arc" cx="60" cy="60" r="52" stroke-dasharray="${C}" stroke-dashoffset="${C}" stroke-width="3"/>
+          </svg>
+          <span class="score-circle-val" id="score-num">0</span>
+          <span class="score-circle-label">Overall</span>
+        </div>
+        <div style="flex:1;min-width:180px;">
+          <div style="font-family:var(--font-mono);font-size:0.58rem;color:var(--dim);letter-spacing:.14em;text-transform:uppercase;margin-bottom:6px;">Your Idea</div>
+          <div style="font-family:var(--font-display);font-size:1rem;font-weight:800;color:var(--white);line-height:1.4;margin-bottom:10px;">"${idea.slice(0,100)}${idea.length>100?'…':''}"</div>
+          <div style="font-size:0.8rem;color:var(--silver);line-height:1.7;">${getRec(scores.overall)}</div>
+        </div>
+      </div>
+      <div style="margin-bottom:20px;">
+        ${meter('Problem Strength',  scores.problemStrength)}
+        ${meter('Market Size',       scores.marketSize)}
+        ${meter('Competitive Edge',  scores.competitor)}
+        ${meter('Feasibility',       scores.feasibility)}
+        ${meter('Opportunity Score', scores.opportunityScore)}
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px;">${getTags(scores)}</div>
+      <button id="val-reset-btn" class="btn-ghost" style="width:100%;font-size:.78rem;padding:12px;">← Analyse Another Idea</button>`;
+    document.getElementById('val-reset-btn')?.addEventListener('click',()=>{
+      document.getElementById('val-result').style.display='none';
+      document.getElementById('val-form').style.display='block';
+      document.querySelectorAll('.val-meter-fill').forEach(f=>f.classList.remove('animate'));
+    });
+  }
+
+  function meter(label,score){
+    return `<div class="val-meter-wrap"><div class="val-meter-label"><span class="val-meter-name">${label}</span><span class="val-meter-score">${score}/100</span></div><div class="val-meter-bar"><div class="val-meter-fill" style="width:${score}%;"></div></div></div>`;
+  }
+
+  function animateCircle(target){
+    const arc=document.getElementById('score-arc'), numEl=document.getElementById('score-num');
+    if(!arc||!numEl) return;
+    const C=2*Math.PI*52;
+    arc.style.transition='stroke-dashoffset 1.5s cubic-bezier(.16,1,.3,1)';
+    arc.style.strokeDashoffset=C-(target/100)*C;
+    let cur=0;
+    const t=setInterval(()=>{ cur=Math.min(cur+target/60,target); numEl.textContent=Math.floor(cur); if(cur>=target){clearInterval(t);numEl.textContent=target;} },25);
+  }
+
+  function getRec(s){
+    return s>=75?'Strong foundation detected. Clear problem-solution fit with identifiable market demand. Next step: lean experiment design.'
+          :s>=55?'Moderate potential identified. Some dimensions need strengthening. Next step: customer discovery interviews.'
+          :'Concept needs refinement. Core assumptions require validation. Next step: problem re-framing workshop.';
+  }
+
+  function getTags(s){
+    return [
+      s.problemStrength>=70?{t:'Clear Problem Signal',c:'tag-green'}:{t:'Problem Needs Clarity',c:'tag-yellow'},
+      s.marketSize>=65?{t:'Sizeable Market',c:'tag-green'}:{t:'Niche Market',c:'tag-yellow'},
+      s.competitor>=60?{t:'Competitive Moat Possible',c:'tag-green'}:{t:'High Competition',c:'tag-red'},
+      s.feasibility>=65?{t:'Feasible to Build',c:'tag-green'}:{t:'Technical Risk Present',c:'tag-yellow'},
+    ].map(i=>`<span class="tag ${i.c}" style="justify-content:center;">${i.t}</span>`).join('');
+  }
+
+  /* ── ROADMAP DEMO ── */
+  const roadmapEl=document.getElementById('roadmap-demo');
+  if(roadmapEl){
+    const phases=[
+      {label:'Phase 1',title:'Validate',weeks:'Weeks 1–4',color:'#ff2d6b',tasks:['Customer discovery (20 interviews)','Problem hypothesis documentation','Competitor analysis report','Solution sketch & wireframes']},
+      {label:'Phase 2',title:'Build MVP',weeks:'Weeks 5–12',color:'#ec4899',tasks:['Core feature set defined','MVP development sprint','Alpha user testing (5 users)','Feedback synthesis & iteration']},
+      {label:'Phase 3',title:'Launch',weeks:'Weeks 13–20',color:'#a78bfa',tasks:['Beta launch to 100 users','Metrics baseline established','Growth loop identified','Investor deck prepared']},
+    ];
+    roadmapEl.innerHTML=phases.map((p,i)=>`
+      <div class="rv d${i+1}" style="background:var(--card);border:1px solid var(--mist-line);padding:24px;position:relative;overflow:hidden;transition:border-color var(--trans-base);" onmouseenter="this.style.borderColor='rgba(255,45,107,.18)'" onmouseleave="this.style.borderColor='var(--mist-line)'">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:${p.color};"></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+          <span style="font-family:var(--font-mono);font-size:0.56rem;font-weight:700;letter-spacing:.18em;color:${p.color};text-transform:uppercase;">${p.label}</span>
+          <span style="font-family:var(--font-mono);font-size:0.52rem;color:var(--dim);letter-spacing:.12em;">${p.weeks}</span>
+        </div>
+        <div style="font-family:var(--font-display);font-size:1.2rem;font-weight:800;color:var(--white);margin-bottom:12px;">${p.title}</div>
+        <ul>${p.tasks.map(t=>`<li style="display:flex;align-items:flex-start;gap:8px;font-size:0.8rem;color:var(--silver);margin-bottom:8px;line-height:1.5;"><span style="color:${p.color};flex-shrink:0;margin-top:1px;">→</span>${t}</li>`).join('')}</ul>
+      </div>`).join('');
+    // Re-trigger reveal on newly added elements
+    roadmapEl.querySelectorAll('.rv').forEach(el=>{
+      new IntersectionObserver(entries=>entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); }),{threshold:.08}).observe(el);
+    });
+  }
+
+  function showNotif(msg,type='info'){
+    const n=document.createElement('div');
+    n.style.cssText=`position:fixed;bottom:32px;right:32px;z-index:99999;background:var(--card);border:1px solid ${type==='error'?'#f87171':'var(--rose)'};padding:16px 24px;font-family:var(--font-body);font-size:0.85rem;color:var(--white);max-width:320px;`;
+    n.textContent=msg; document.body.appendChild(n); setTimeout(()=>n.remove(),3500);
+  }
+
+})();
+</script>
+</body>
+</html>
